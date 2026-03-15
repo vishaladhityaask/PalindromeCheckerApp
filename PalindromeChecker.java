@@ -1,23 +1,41 @@
-package PalindromeCheckerApp;
 import java.util.Scanner;
 
-public class PalindromeChecker {
+class PalindromeCheckerApp {
+
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        System.out.print("Input text: ");
+
+        System.out.println("Welcome to Palindrome Checker App - UC4");
+
+        System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        boolean isPalindrome = true;
-        int n = input.length() - 1;
+        // Convert string to character array
+        char[] arr = input.toCharArray();
 
-        for (int i = 0; i <= n / 2; i++) {
-            if (input.charAt(i) != input.charAt(n - i)) {
+        int start = 0;
+        int end = arr.length - 1;
+
+        boolean isPalindrome = true;
+
+        // Two-pointer comparison
+        while (start < end) {
+            if (arr[start] != arr[end]) {
                 isPalindrome = false;
                 break;
             }
+            start++;
+            end--;
         }
 
-        System.out.println("It is a Palindrome ? : " + isPalindrome);
+        // Result
+        if (isPalindrome) {
+            System.out.println("The given string is a Palindrome.");
+        } else {
+            System.out.println("The given string is NOT a Palindrome.");
+        }
+
         sc.close();
     }
 }
